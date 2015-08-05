@@ -19,6 +19,7 @@ import com.mikepenz.materialdrawer.model.interfaces.Nameable;
 import com.mikerinehart.smarterbit.R;
 import com.mikerinehart.smarterbit.application.fragments.CallsFragment;
 import com.mikerinehart.smarterbit.application.fragments.HomeFragment;
+import com.mikerinehart.smarterbit.application.fragments.SMSFragment;
 
 import java.net.URI;
 
@@ -27,7 +28,8 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements
                 HomeFragment.OnFragmentInteractionListener,
-                CallsFragment.OnFragmentInteractionListener {
+                CallsFragment.OnFragmentInteractionListener,
+                SMSFragment.OnFragmentInteractionListener {
 
     Drawer mResult;
 
@@ -69,14 +71,14 @@ public class MainActivity extends AppCompatActivity implements
                                 case (1):
                                     //Calls
                                     ft.replace(R.id.container, CallsFragment.newInstance());
-                                    ft.addToBackStack("Home");
+                                    ft.addToBackStack("Calls");
                                     ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                                     ft.commit();
                                     break;
                                 case (2):
                                     //SMS
-                                    ft.replace(R.id.container, HomeFragment.newInstance());
-                                    ft.addToBackStack("Home");
+                                    ft.replace(R.id.container, SMSFragment.newInstance());
+                                    ft.addToBackStack("SMS");
                                     ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                                     ft.commit();
                                     break;

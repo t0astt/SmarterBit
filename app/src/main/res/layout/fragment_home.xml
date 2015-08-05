@@ -1,49 +1,55 @@
-<android.support.v7.widget.CardView
-    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/home_card"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    cardview:cardCornerRadius="4dp">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="16dp">
 
-    <RelativeLayout
+    <android.support.v7.widget.CardView
+        xmlns:cardview="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/home_card"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp">
+        android:layout_height="wrap_content"
+        cardview:cardCornerRadius="4dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
 
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="SmarterBit"
-            android:id="@+id/home_title"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:gravity="center_horizontal"
-            android:textStyle="bold"
-            android:textSize="35sp" />
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="SmarterBit"
+                android:id="@+id/home_title"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textSize="35sp" />
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Welcome to SmarterBit"
-            android:id="@+id/home_subtitle"
-            android:layout_below="@+id/home_title"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"
-            android:textStyle="bold" />
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Welcome to SmarterBit"
+                android:id="@+id/home_subtitle"
+                android:layout_below="@+id/home_title"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="SmarterBit is an XPosed Framework module to enable additional functionality for the Fitbit Charge and Charge HR fitness trackers.\n\nUse SmarterBit to enable new notifications such as SMS, weather, timers, and more!\n\nPlease note that a rooted phone with XPosed Framework installed is needed for the this app to function."
-            android:id="@+id/home_desc"
-            android:layout_below="@+id/home_subtitle"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="8dp" />
-    </RelativeLayout>
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="SmarterBit is an XPosed Framework module to enable additional functionality for the Fitbit Charge and Charge HR fitness trackers.\n\nUse SmarterBit to enable new notifications such as SMS, weather, timers, and more!\n\nPlease note that a rooted phone with XPosed Framework installed is needed for the this app to function."
+                android:id="@+id/home_desc"
+                android:layout_below="@+id/home_subtitle"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp" />
+        </RelativeLayout>
 
-</android.support.v7.widget.CardView>
+    </android.support.v7.widget.CardView>
+</RelativeLayout>

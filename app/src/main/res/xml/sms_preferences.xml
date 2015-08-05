@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="Enable">
+        <CheckBoxPreference
+            android:title="Enabled"
+            android:defaultValue="false"
+            android:summary="If checked, you will receive SMS notifications on your FitBit."
+            android:key="smsEnabled" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="Settings">
+        <CheckBoxPreference
+            android:title="Notify If Screen Is On"
+            android:defaultValue="false"
+            android:summary="If unchecked, you will receive SMS notifications on your FitBit only if your device screen is off."
+            android:key="smsScreenOffOnly" />
+        <EditTextPreference
+            android:title="Custom Notification Format"
+            android:key="smsNotificationFormat"
+            android:summary="Enter how you want your notification to appear, using %sender% and %message% as placeholders."/>
+    </PreferenceCategory>
+</PreferenceScreen>

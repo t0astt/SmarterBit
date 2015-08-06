@@ -12,10 +12,15 @@
     <PreferenceCategory
         android:title="Settings">
         <CheckBoxPreference
-            android:title="Notify If Screen Is On"
+            android:title="Notify Only If Screen Off"
             android:defaultValue="false"
-            android:summary="If unchecked, you will receive SMS notifications on your FitBit only if your device screen is off."
+            android:summary="If checked, you will receive SMS notifications on your FitBit only if your device screen is off."
             android:key="smsScreenOffOnly" />
+        <CheckBoxPreference
+            android:title="Notify Only If Silent"
+            android:defaultValue="false"
+            android:summary="If checked, you will only receive SMS notifications on your FitBit if the phone is on silent."
+            android:key="smsSilentOnly" />
         <EditTextPreference
             android:title="Custom Notification Format"
             android:key="smsNotificationFormat"

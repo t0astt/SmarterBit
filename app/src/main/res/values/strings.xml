@@ -32,4 +32,15 @@
     <string name="call_only_if_silent_description">If checked, you will only receive call notifications on your FitBit if your device is silent.</string>
     <string name="call_hide_caller_id">Hide Caller ID</string>
     <string name="call_hide_caller_id_description">Hide caller ID and replace it with a generic call notification.</string>
+
+    <!-- About & Legal -->
+    <string name="about_subtitle">About</string>
+    <string name="about_description">SmarterBit is an XPosed Framework module for adding
+                                    additional functionality to the FitBit Charge and Charge HR fitness trackers.
+    </string>
+    <string name="legal_subtitle">Legal</string>
+    <string name="legal_description">SmarterBit is an unofficial modification to the FitBit fitness tracker.
+                                    Although no negative issues have been encountered, use of this app is at your own risk
+                                    and neither FitBit nor the developer of this app will be held accountable for any damage incurred.</string>
+    <string name="copyright">© 2015 Mike Rinehart</string>
 </resources>

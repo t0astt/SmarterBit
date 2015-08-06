@@ -23,6 +23,7 @@
             android:key="callSilentOnly" />
         <CheckBoxPreference
             android:title="@string/call_hide_caller_id"
+            android:defaultValue="false"
             android:key="callHideID"
             android:summary="@string/call_hide_caller_id_description"/>
     </PreferenceCategory>

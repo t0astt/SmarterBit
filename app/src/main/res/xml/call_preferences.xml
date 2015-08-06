@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="Enable">
+        <CheckBoxPreference
+            android:title="Enabled"
+            android:defaultValue="false"
+            android:checked="false"
+            android:summary="If checked, you will receive call notifications on your FitBit. Overrides your setting in the FitBit app."
+            android:key="callEnabled" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="Settings">
+        <CheckBoxPreference
+            android:title="Notify Only If Screen Off"
+            android:defaultValue="false"
+            android:summary="If checked, you will only receive call notifications on your FitBit if your device screen is off."
+            android:key="callScreenOffOnly" />
+        <CheckBoxPreference
+            android:title="Notify Only If  Silent"
+            android:defaultValue="false"
+            android:summary="If checked, you will only receive call notifications on your FitBit if your device is silent."
+            android:key="callSilentOnly" />
+        <CheckBoxPreference
+            android:title="Hide Caller ID"
+            android:key="callHideID"
+            android:summary="Hide caller ID and replace it with a generic call notification."/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="Test">
+        <Preference
+            android:title="Test Notification"
+            android:summary="Click to send a test notification to your FitBit using the chosen settings."
+            android:key="callTestNotification" />
+    </PreferenceCategory>
+</PreferenceScreen>

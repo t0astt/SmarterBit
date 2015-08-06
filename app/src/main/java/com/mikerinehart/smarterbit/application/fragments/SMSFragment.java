@@ -10,8 +10,6 @@ import com.mikerinehart.smarterbit.R;
 
 public class SMSFragment extends PreferenceFragment {
 
-    private Preference mTestNotificationPreference;
-
     public static SMSFragment newInstance() {
         return new SMSFragment();
     }
@@ -22,12 +20,14 @@ public class SMSFragment extends PreferenceFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.sms_preferences);
-        mTestNotificationPreference = findPreference("smsTestNotification");
+        Preference mTestNotificationPreference = findPreference("smsTestNotification");
 
         mTestNotificationPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                Toast.makeText(getActivity(), "Test notification sent - check your FitBit!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),
+                        getString(R.string.test_notification_sent),
+                        Toast.LENGTH_SHORT).show();
                 //TODO: Add in Test function
                 return true;
             }
@@ -38,7 +38,7 @@ public class SMSFragment extends PreferenceFragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        getActivity().setTitle(getResources().getString(R.string.sms_title));
+        getActivity().setTitle(getString(R.string.sms_title));
     }
 
     @Override

@@ -9,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Toast;
 
 import com.mikepenz.iconics.typeface.FontAwesome;
 import com.mikepenz.materialdrawer.Drawer;
@@ -20,6 +19,7 @@ import com.mikepenz.materialdrawer.model.interfaces.Nameable;
 import com.mikerinehart.smarterbit.R;
 import com.mikerinehart.smarterbit.application.fragments.CallsFragment;
 import com.mikerinehart.smarterbit.application.fragments.HomeFragment;
+import com.mikerinehart.smarterbit.application.fragments.OtherFragment;
 import com.mikerinehart.smarterbit.application.fragments.SMSFragment;
 
 import butterknife.Bind;
@@ -83,22 +83,22 @@ public class MainActivity extends AppCompatActivity implements
                                     break;
                                 case (3):
                                     //Other
-                                    ft.replace(R.id.container, HomeFragment.newInstance());
-                                    ft.addToBackStack("Home");
+                                    ft.replace(R.id.container, OtherFragment.newInstance());
+                                    ft.addToBackStack("Other");
                                     ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                                     ft.commit();
                                     break;
                                 case (4):
                                     //Extras
                                     ft.replace(R.id.container, HomeFragment.newInstance());
-                                    ft.addToBackStack("Home");
+                                    ft.addToBackStack("Extras");
                                     ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                                     ft.commit();
                                     break;
                                 case (5):
                                     //About & Legal
                                     ft.replace(R.id.container, HomeFragment.newInstance());
-                                    ft.addToBackStack("Home");
+                                    ft.addToBackStack("AboutLegal");
                                     ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                                     ft.commit();
                                     break;
@@ -134,7 +134,6 @@ public class MainActivity extends AppCompatActivity implements
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Toast.makeText(MainActivity.this, "Testing", Toast.LENGTH_SHORT).show();
             return true;
         }
 

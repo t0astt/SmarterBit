@@ -15,16 +15,12 @@ public class SMSFragment extends PreferenceFragment {
     private Preference mTestSMSPreference;
     private CheckBoxPreference mNotifyScreenOnCheckBox;
 
-    private OnFragmentInteractionListener mListener;
-
     public static SMSFragment newInstance() {
         SMSFragment fragment = new SMSFragment();
         return fragment;
     }
 
-    public SMSFragment() {
-        // Required empty public constructor
-    }
+    public SMSFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,7 +28,7 @@ public class SMSFragment extends PreferenceFragment {
         addPreferencesFromResource(R.xml.sms_preferences);
 
         mSMSEnabledCheckBox = (CheckBoxPreference)findPreference("smsEnabled");
-        mTestSMSPreference = (Preference)findPreference("smsTestNotification");
+        mTestSMSPreference = findPreference("smsTestNotification");
         mNotifyScreenOnCheckBox = (CheckBoxPreference)findPreference("smsScreenOffOnly");
 
         mTestSMSPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -47,30 +43,16 @@ public class SMSFragment extends PreferenceFragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        getActivity().setTitle("SMS Notifications");
-    }
-
-    @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        try {
-            mListener = (OnFragmentInteractionListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+        getActivity().setTitle("SMS Notifications");
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
     }
 
-    public interface OnFragmentInteractionListener {
-
-    }
+    public interface OnFragmentInteractionListener {}
 
 }

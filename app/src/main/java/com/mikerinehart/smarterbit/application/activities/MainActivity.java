@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.mikepenz.iconics.typeface.FontAwesome;
 import com.mikepenz.materialdrawer.Drawer;
@@ -20,8 +21,6 @@ import com.mikerinehart.smarterbit.R;
 import com.mikerinehart.smarterbit.application.fragments.CallsFragment;
 import com.mikerinehart.smarterbit.application.fragments.HomeFragment;
 import com.mikerinehart.smarterbit.application.fragments.SMSFragment;
-
-import java.net.URI;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -135,6 +134,7 @@ public class MainActivity extends AppCompatActivity implements
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Toast.makeText(MainActivity.this, "Testing", Toast.LENGTH_SHORT).show();
             return true;
         }
 

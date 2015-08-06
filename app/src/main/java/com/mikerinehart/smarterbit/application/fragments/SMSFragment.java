@@ -1,24 +1,19 @@
 package com.mikerinehart.smarterbit.application.fragments;
 
 import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.preference.CheckBoxPreference;
+import android.preference.Preference;
 import android.preference.PreferenceFragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
+import android.widget.Toast;
 
 import com.mikerinehart.smarterbit.R;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-
 public class SMSFragment extends PreferenceFragment {
 
-    CheckBoxPreference mCheckBoxPreference;
+    private CheckBoxPreference mSMSEnabledCheckBox;
+    private Preference mTestSMSPreference;
+    private CheckBoxPreference mNotifyScreenOnCheckBox;
 
     private OnFragmentInteractionListener mListener;
 
@@ -35,15 +30,27 @@ public class SMSFragment extends PreferenceFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.sms_preferences);
-        mCheckBoxPreference = (CheckBoxPreference)findPreference("smsEnabled");
+
+        mSMSEnabledCheckBox = (CheckBoxPreference)findPreference("smsEnabled");
+        mTestSMSPreference = (Preference)findPreference("smsTestNotification");
+        mNotifyScreenOnCheckBox = (CheckBoxPreference)findPreference("smsScreenOffOnly");
+
+        mTestSMSPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Toast.makeText(getActivity(), "Test notification sent - check your FitBit!", Toast.LENGTH_SHORT).show();
+                //TODO: Add in Test function
+                return true;
+            }
+        });
+
     }
 
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState) {
-//        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_sms, container, false);
-//    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        getActivity().setTitle("SMS Notifications");
+    }
 
     @Override
     public void onAttach(Activity activity) {
@@ -62,19 +69,8 @@ public class SMSFragment extends PreferenceFragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
+
     }
 
 }

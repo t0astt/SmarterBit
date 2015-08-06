@@ -5,6 +5,7 @@
         <CheckBoxPreference
             android:title="Enabled"
             android:defaultValue="false"
+            android:checked="false"
             android:summary="If checked, you will receive SMS notifications on your FitBit."
             android:key="smsEnabled" />
     </PreferenceCategory>
@@ -19,5 +20,12 @@
             android:title="Custom Notification Format"
             android:key="smsNotificationFormat"
             android:summary="Enter how you want your notification to appear, using %sender% and %message% as placeholders."/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="Test">
+        <Preference
+            android:title="Test Notification"
+            android:summary="Click to send a test notification to your FitBit using the chosen settings."
+            android:key="smsTestNotification" />
     </PreferenceCategory>
 </PreferenceScreen>

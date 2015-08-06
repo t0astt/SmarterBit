@@ -2,7 +2,6 @@ package com.mikerinehart.smarterbit.application.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.widget.Toast;
@@ -11,13 +10,10 @@ import com.mikerinehart.smarterbit.R;
 
 public class SMSFragment extends PreferenceFragment {
 
-    private CheckBoxPreference mSMSEnabledCheckBox;
-    private Preference mTestSMSPreference;
-    private CheckBoxPreference mNotifyScreenOnCheckBox;
+    private Preference mTestNotificationPreference;
 
     public static SMSFragment newInstance() {
-        SMSFragment fragment = new SMSFragment();
-        return fragment;
+        return new SMSFragment();
     }
 
     public SMSFragment() {}
@@ -26,12 +22,9 @@ public class SMSFragment extends PreferenceFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.sms_preferences);
+        mTestNotificationPreference = findPreference("smsTestNotification");
 
-        mSMSEnabledCheckBox = (CheckBoxPreference)findPreference("smsEnabled");
-        mTestSMSPreference = findPreference("smsTestNotification");
-        mNotifyScreenOnCheckBox = (CheckBoxPreference)findPreference("smsScreenOffOnly");
-
-        mTestSMSPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+        mTestNotificationPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 Toast.makeText(getActivity(), "Test notification sent - check your FitBit!", Toast.LENGTH_SHORT).show();
@@ -45,7 +38,7 @@ public class SMSFragment extends PreferenceFragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        getActivity().setTitle("SMS Notifications");
+        getActivity().setTitle(getResources().getString(R.string.sms_title));
     }
 
     @Override

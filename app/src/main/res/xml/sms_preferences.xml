@@ -3,34 +3,34 @@
     <PreferenceCategory
         android:title="Enable">
         <CheckBoxPreference
-            android:title="Enabled"
+            android:title="@string/setting_enabled"
             android:defaultValue="false"
             android:checked="false"
-            android:summary="If checked, you will receive SMS notifications on your FitBit."
+            android:summary="@string/sms_enabled_description"
             android:key="smsEnabled" />
     </PreferenceCategory>
     <PreferenceCategory
-        android:title="Settings">
+        android:title="@string/settings">
         <CheckBoxPreference
-            android:title="Notify Only If Screen Off"
+            android:title="@string/notify_only_if_screen_off"
             android:defaultValue="false"
-            android:summary="If checked, you will receive SMS notifications on your FitBit only if your device screen is off."
+            android:summary="@string/sms_only_if_screen_off_description"
             android:key="smsScreenOffOnly" />
         <CheckBoxPreference
-            android:title="Notify Only If Silent"
+            android:title="@string/notify_only_if_silent"
             android:defaultValue="false"
-            android:summary="If checked, you will only receive SMS notifications on your FitBit if the phone is on silent."
+            android:summary="@string/sms_only_if_silent_description"
             android:key="smsSilentOnly" />
         <EditTextPreference
-            android:title="Custom Notification Format"
+            android:title="@string/sms_custom_format"
             android:key="smsNotificationFormat"
-            android:summary="Enter how you want your notification to appear, using %sender% and %message% as placeholders."/>
+            android:summary="@string/sms_custom_format_description"/>
     </PreferenceCategory>
     <PreferenceCategory
-        android:title="Test">
+        android:title="@string/test">
         <Preference
-            android:title="Test Notification"
-            android:summary="Click to send a test notification to your FitBit using the chosen settings."
+            android:title="@string/test_notification"
+            android:summary="@string/test_notification_description"
             android:key="smsTestNotification" />
     </PreferenceCategory>
 </PreferenceScreen>

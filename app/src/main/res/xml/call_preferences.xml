@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory
-        android:title="Enable">
+        android:title="@string/enable">
         <CheckBoxPreference
-            android:title="Enabled"
+            android:title="@string/setting_enabled"
             android:defaultValue="false"
             android:checked="false"
-            android:summary="If checked, you will receive call notifications on your FitBit. Overrides your setting in the FitBit app."
+            android:summary="@string/call_enabled_description"
             android:key="callEnabled" />
     </PreferenceCategory>
     <PreferenceCategory
-        android:title="Settings">
+        android:title="@string/settings">
         <CheckBoxPreference
-            android:title="Notify Only If Screen Off"
+            android:title="@string/notify_only_if_screen_off"
             android:defaultValue="false"
-            android:summary="If checked, you will only receive call notifications on your FitBit if your device screen is off."
+            android:summary="@string/call_only_if_screen_off_description"
             android:key="callScreenOffOnly" />
         <CheckBoxPreference
-            android:title="Notify Only If  Silent"
+            android:title="@string/notify_only_if_silent"
             android:defaultValue="false"
-            android:summary="If checked, you will only receive call notifications on your FitBit if your device is silent."
+            android:summary="@string/call_only_if_silent_description"
             android:key="callSilentOnly" />
         <CheckBoxPreference
-            android:title="Hide Caller ID"
+            android:title="@string/call_hide_caller_id"
             android:key="callHideID"
-            android:summary="Hide caller ID and replace it with a generic call notification."/>
+            android:summary="@string/call_hide_caller_id_description"/>
     </PreferenceCategory>
     <PreferenceCategory
-        android:title="Test">
+        android:title="@string/test">
         <Preference
-            android:title="Test Notification"
-            android:summary="Click to send a test notification to your FitBit using the chosen settings."
+            android:title="@string/test_notification"
+            android:summary="@string/test_notification_description"
             android:key="callTestNotification" />
     </PreferenceCategory>
 </PreferenceScreen>

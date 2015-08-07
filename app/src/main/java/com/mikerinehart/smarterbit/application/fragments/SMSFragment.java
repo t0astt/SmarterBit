@@ -7,6 +7,9 @@ import android.preference.PreferenceFragment;
 import android.widget.Toast;
 
 import com.mikerinehart.smarterbit.R;
+import com.mikerinehart.smarterbit.xposed.Common;
+import com.mikerinehart.smarterbit.xposed.SMS;
+import com.mikerinehart.smarterbit.xposed.SmarterBitXposed;
 
 public class SMSFragment extends PreferenceFragment {
 

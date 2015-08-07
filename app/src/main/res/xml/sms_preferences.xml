@@ -16,11 +16,6 @@
             android:defaultValue="false"
             android:summary="@string/sms_only_if_screen_off_description"
             android:key="smsScreenOffOnly" />
-        <CheckBoxPreference
-            android:title="@string/notify_only_if_silent"
-            android:defaultValue="false"
-            android:summary="@string/sms_only_if_silent_description"
-            android:key="smsSilentOnly" />
         <EditTextPreference
             android:title="@string/sms_custom_format"
             android:key="smsNotificationFormat"

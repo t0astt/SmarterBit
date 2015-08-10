@@ -42,7 +42,7 @@ public class SMS {
                         String body = sms.getMessageBody();
 
                         // SMS Enabled?
-                        if (SMS.isSMSNotificationsEnabled()) {
+                        if (SMS.isSMSNotificationEnabled()) {
                             XposedBridge.log("SMS Notifications Enabled");
                             //Send Notification Only if the Screen is Off?
                             if (SMS.isNotifyOnlyIfScreenOffEnabled()) {
@@ -100,7 +100,7 @@ public class SMS {
     /*
      * Checks if user has SMS notifications enabled
      */
-    private static boolean isSMSNotificationsEnabled() {
+    private static boolean isSMSNotificationEnabled() {
         boolean status = SmarterBitXposed.getPreferences().getBoolean("smsEnabled", false);
         if (status) {
             XposedBridge.log("SMS Status: Enabled");

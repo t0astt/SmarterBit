@@ -4,7 +4,7 @@ public enum PackageName {
     SMARTERBIT("com.mikerinehart.smarterbit"),
     FITBIT("com.fitbit.FitbitMobile");
 
-    public String packageName;
+    private String packageName;
 
     PackageName(String name) {
         packageName = name;

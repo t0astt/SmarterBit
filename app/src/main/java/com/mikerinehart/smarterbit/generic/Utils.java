@@ -19,12 +19,12 @@ public class Utils {
     @TargetApi(20)
     public static boolean isScreenOn() {
         if (getSDKVersion() >= 20) {
-            XposedBridge.log("Power service using new");
+            XposedBridge.log("Power Service via Interactive");
             boolean status = ((PowerManager)Common.getContext().getSystemService(Context.POWER_SERVICE)).isInteractive();
             if (status) XposedBridge.log("Power service returning true"); else XposedBridge.log("Pwr return false");
             return ((PowerManager)Common.getContext().getSystemService(Context.POWER_SERVICE)).isInteractive();
         } else {
-            XposedBridge.log("Power service using deprecated");
+            XposedBridge.log("Power service via ScreenOn (deprecated)");
             boolean status = ((PowerManager)Common.getContext().getSystemService(Context.POWER_SERVICE)).isScreenOn();
             if (status) XposedBridge.log("Power service returning true"); else XposedBridge.log("Pwr return false");
             return ((PowerManager)Common.getContext().getSystemService(Context.POWER_SERVICE)).isScreenOn();

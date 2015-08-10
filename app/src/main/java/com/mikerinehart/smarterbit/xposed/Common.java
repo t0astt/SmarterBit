@@ -51,7 +51,7 @@ public class Common {
      * Returns the FitBit package name
      */
     public static String getFitBitPackageName() {
-        return "com.fitbit"; // TODO: Replace with enum value!
+        return PackageName.FITBIT.getPackageName(); // TODO: Replace with enum value!
     }
 
     public static void addPackageName(Object notification, String packageName) {

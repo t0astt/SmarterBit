@@ -20,6 +20,7 @@ public class SmarterBitXposed implements IXposedHookLoadPackage, IXposedHookZygo
         if(lpparam.packageName.equals(PackageName.FITBIT.getPackageName())) {
             Common.init(lpparam);
             SMS.initHooks(lpparam);
+            Call.initHooks(lpparam);
         }
     }
 

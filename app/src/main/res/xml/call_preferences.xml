@@ -16,11 +16,11 @@
             android:defaultValue="false"
             android:summary="@string/call_only_if_screen_off_description"
             android:key="callScreenOffOnly" />
-        <CheckBoxPreference
-            android:title="@string/notify_only_if_silent"
-            android:defaultValue="false"
-            android:summary="@string/call_only_if_silent_description"
-            android:key="callSilentOnly" />
+        <!--<CheckBoxPreference-->
+            <!--android:title="@string/notify_only_if_silent"-->
+            <!--android:defaultValue="false"-->
+            <!--android:summary="@string/call_only_if_silent_description"-->
+            <!--android:key="callSilentOnly" />-->
         <CheckBoxPreference
             android:title="@string/call_hide_caller_id"
             android:defaultValue="false"

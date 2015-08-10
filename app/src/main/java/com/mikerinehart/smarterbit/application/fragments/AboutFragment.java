@@ -34,11 +34,6 @@ public class AboutFragment extends Fragment {
         getActivity().setTitle(getString(R.string.about_title));
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-    }
-
     public interface OnFragmentInteractionListener {}
 
 }

@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import com.mikerinehart.smarterbit.R;
 
-public class CallsFragment extends PreferenceFragment {
+public class CallsFragment extends BasePreferenceFragment {
 
     public static CallsFragment newInstance() {
         return new CallsFragment();

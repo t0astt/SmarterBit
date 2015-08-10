@@ -36,16 +36,6 @@ public class SMSFragment extends BasePreferenceFragment implements SharedPrefere
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
-
-    @Override
     public void onSharedPreferenceChanged(SharedPreferences sp, String s) {
         super.onSharedPreferenceChanged(sp, s);
     }

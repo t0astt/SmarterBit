@@ -6,7 +6,7 @@ import android.preference.PreferenceFragment;
 
 import com.mikerinehart.smarterbit.R;
 
-public class ExtrasFragment extends PreferenceFragment {
+public class ExtrasFragment extends BasePreferenceFragment {
 
     public static ExtrasFragment newInstance() {
         return new ExtrasFragment();
@@ -24,11 +24,6 @@ public class ExtrasFragment extends PreferenceFragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         getActivity().setTitle(getString(R.string.extras_title));
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
     }
 
     public interface OnFragmentInteractionListener {}

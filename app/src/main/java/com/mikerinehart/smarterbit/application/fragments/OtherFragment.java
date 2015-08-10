@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.mikerinehart.smarterbit.R;
 
-public class OtherFragment extends PreferenceFragment {
+public class OtherFragment extends BasePreferenceFragment {
 
     public static OtherFragment newInstance() {
         return new OtherFragment();
@@ -28,11 +28,6 @@ public class OtherFragment extends PreferenceFragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         getActivity().setTitle(getString(R.string.other_title));
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
     }
 
     public interface OnFragmentInteractionListener {}

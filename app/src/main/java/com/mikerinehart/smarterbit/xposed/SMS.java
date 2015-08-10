@@ -25,12 +25,12 @@ public class SMS {
 
     public static void initHooks(XC_LoadPackage.LoadPackageParam lpparam) {
 
-        SmsObserver = findClass("com.fitbit.dncs.observers.sms.SmsObserver", lpparam.classLoader);
-        CategoryID = findClass("com.fitbit.dncs.domain.CategoryID", lpparam.classLoader);
-        FitBitApplication = findClass("com.fitbit.FitBitApplication", lpparam.classLoader);
-        ObserversA = findClass("com.fitbit.dncs.observers.a", lpparam.classLoader);
-        DomainA = findClass("com.fitbit.dncs.domain.a", lpparam.classLoader);
-        NotificationAttributeID = findClass("com.fitbit.dncs.domain.NotificationAttributeId", lpparam.classLoader);
+        SmsObserver = findClass(ClassName.SMS_OBSERVER.getClassName(), lpparam.classLoader);
+        CategoryID = findClass(ClassName.CATEGORY_ID.getClassName(), lpparam.classLoader);
+        FitBitApplication = findClass(ClassName.FITBIT_APPLICATION.getClassName(), lpparam.classLoader);
+        ObserversA = findClass(ClassName.OBSERVERS_A.getClassName(), lpparam.classLoader);
+        DomainA = findClass(ClassName.DOMAIN_A.getClassName(), lpparam.classLoader);
+        NotificationAttributeID = findClass(ClassName.NOTIFICATION_ATTRIBUTE_ID.getClassName(), lpparam.classLoader);
 
         //SMS Hook
         XposedHelpers.findAndHookMethod(SmsObserver.getCanonicalName(), lpparam.classLoader, "a", Context.class, Intent.class,
@@ -100,7 +100,7 @@ public class SMS {
     /*
      * Checks if user has SMS notifications enabled
      */
-    public static boolean isSMSNotificationsEnabled() {
+    private static boolean isSMSNotificationsEnabled() {
         boolean status = SmarterBitXposed.getPreferences().getBoolean("smsEnabled", false);
         if (status) {
             XposedBridge.log("SMS Status: Enabled");
@@ -111,7 +111,7 @@ public class SMS {
     /*
      * Checks if user has screen off notifications enabled
      */
-    public static boolean isNotifyOnlyIfScreenOffEnabled() {
+    private static boolean isNotifyOnlyIfScreenOffEnabled() {
         boolean status = SmarterBitXposed.getPreferences().getBoolean("smsScreenOffOnly", false);
         if (status) {
             XposedBridge.log("SMS Screen off only: Enabled");

@@ -24,13 +24,13 @@ public class Common {
     static Class DncsNotificationDisplayType;
 
     public static void init(XC_LoadPackage.LoadPackageParam lpparam) {
-        FitBitApplication = findClass("com.fitbit.FitBitApplication", lpparam.classLoader);
-        NotificationManager = findClass("com.fitbit.dncs.NotificationManager", lpparam.classLoader);
-        Notification = findClass("com.fitbit.dncs.Notification", lpparam.classLoader);
-        CategoryID = findClass("com.fitbit.dncs.domain.CategoryID", lpparam.classLoader);
-        NotificationAttributeID = findClass("com.fitbit.dncs.domain.NotificationAttributeId", lpparam.classLoader);
-        DomainA = findClass("com.fitbit.dncs.domain.a", lpparam.classLoader);
-        DncsNotificationDisplayType = findClass("com.fitbit.dncs.NotificationManager$DncsNotificationDisplayType", lpparam.classLoader);
+        FitBitApplication = findClass(ClassName.FITBIT_APPLICATION.getClassName(), lpparam.classLoader);
+        NotificationManager = findClass(ClassName.NOTIFICATION_MANAGER.getClassName(), lpparam.classLoader);
+        Notification = findClass(ClassName.NOTIFICATION.getClassName(), lpparam.classLoader);
+        CategoryID = findClass(ClassName.CATEGORY_ID.getClassName(), lpparam.classLoader);
+        NotificationAttributeID = findClass(ClassName.NOTIFICATION_ATTRIBUTE_ID.getClassName(), lpparam.classLoader);
+        DomainA = findClass(ClassName.DOMAIN_A.getClassName(), lpparam.classLoader);
+        DncsNotificationDisplayType = findClass(ClassName.DNCS_NOTIFICATION_DISPLAY_TYPE.getClassName(), lpparam.classLoader);
     }
 
     /*

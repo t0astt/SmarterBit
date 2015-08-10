@@ -1,4 +1,4 @@
-package com.mikerinehart.smarterbit.generic;
+package com.mikerinehart.smarterbit.xposed;
 
 public enum PackageName {
     SMARTERBIT("com.mikerinehart.smarterbit"),

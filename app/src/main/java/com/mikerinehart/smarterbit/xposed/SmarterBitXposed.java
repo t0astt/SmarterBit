@@ -2,8 +2,6 @@ package com.mikerinehart.smarterbit.xposed;
 
 import android.content.SharedPreferences;
 
-import com.mikerinehart.smarterbit.generic.PackageName;
-
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.IXposedHookZygoteInit;
 import de.robv.android.xposed.XSharedPreferences;

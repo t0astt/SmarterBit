@@ -2,19 +2,12 @@ package com.mikerinehart.smarterbit.xposed;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.telephony.SmsMessage;
 
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
+import com.mikerinehart.smarterbit.generic.Utils;
 
 import de.robv.android.xposed.XC_MethodHook;
-import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
@@ -30,8 +23,6 @@ public class SMS {
     static Class DomainA;
     static Class NotificationAttributeID;
 
-    private static boolean log = true;
-
     public static void initHooks(XC_LoadPackage.LoadPackageParam lpparam) {
 
         SmsObserver = findClass("com.fitbit.dncs.observers.sms.SmsObserver", lpparam.classLoader);
@@ -45,21 +36,19 @@ public class SMS {
         XposedHelpers.findAndHookMethod(SmsObserver.getCanonicalName(), lpparam.classLoader, "a", Context.class, Intent.class,
                 new XC_MethodHook() {
                     protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+                        XposedBridge.log("SMS Received!");
                         SmsMessage sms = getReceivedSMS(param);
-                        String sender = getSmsSender(sms);
-                        String body = getSmsBody(sms);
+                        String sender = sms.getOriginatingAddress();
+                        String body = sms.getMessageBody();
 
                         // SMS Enabled?
                         if (SMS.isSMSNotificationsEnabled()) {
-                            sendSMSNotification(sender, body);
-
+                            XposedBridge.log("SMS Notifications Enabled");
                             //Send Notification Only if the Screen is Off?
                             if (SMS.isNotifyOnlyIfScreenOffEnabled()) {
-                                if (Common.isScreenOff()) {
+                                if (Utils.isScreenOn() == false) {
+                                    XposedBridge.log("Screen is off and setting is enabled");
                                     //Option is enabled and screen is off, send
-                                    sendSMSNotification(sender, body);
-                                } else {
-                                    // Option is enabled but screen is not off, don't send notification
                                     sendSMSNotification(sender, body);
                                 }
                             } else {
@@ -83,7 +72,7 @@ public class SMS {
         Common.addPackageName(notification, fitbitPackageName);
 
         // Create Notification Message
-        sender = matchContact(sender);
+        sender = Common.matchContact(sender);
         notificationMessage = formatMessage(sender, message);
         Object notificationAttributeIdB = Common.getTitleNotificationAttributeId();
         Object titleDomain = Common.getDomainA(notificationAttributeIdB, notificationMessage);
@@ -109,74 +98,58 @@ public class SMS {
     }
 
     /*
-     * Receives an SMS and returns the sender
+     * Checks if user has SMS notifications enabled
      */
-    private static String getSmsSender(SmsMessage sms) {
-        return sms.getOriginatingAddress();
+    public static boolean isSMSNotificationsEnabled() {
+        boolean status = SmarterBitXposed.getPreferences().getBoolean("smsEnabled", false);
+        if (status) {
+            XposedBridge.log("SMS Status: Enabled");
+        } else XposedBridge.log("SMS Status: False");
+        return SmarterBitXposed.getPreferences().getBoolean("smsEnabled", false);
     }
 
     /*
-     * Receives an SMS and returns the body
+     * Checks if user has screen off notifications enabled
      */
-    private static String getSmsBody(SmsMessage sms) {
-        return sms.getMessageBody();
-    }
-
-    public static boolean isSMSNotificationsEnabled() {
-
-        return true;
-    }
-
     public static boolean isNotifyOnlyIfScreenOffEnabled() {
-
-        return true;
+        boolean status = SmarterBitXposed.getPreferences().getBoolean("smsScreenOffOnly", false);
+        if (status) {
+            XposedBridge.log("SMS Screen off only: Enabled");
+        } else XposedBridge.log("SMS Screen off only: False");
+        return SmarterBitXposed.getPreferences().getBoolean("smsScreenOffOnly", false);
     }
 
-    public static String formatMessage(String sender, String message) {
-
-        if (true) { // If custom notification format exists, replace placeholders
-            String placeHolderUntilNotLazy = "%sender% : %message%";
-            placeHolderUntilNotLazy = placeHolderUntilNotLazy
+    /*
+     * Reads a custom notification format set by the user
+     */
+    private static String formatMessage(String sender, String message) {
+            String messageFormat = SmarterBitXposed
+                    .getPreferences()
+                    .getString("smsNotificationFormat", "msg from %sender%: %message%");
+            messageFormat = messageFormat
                     .replaceFirst("%sender%", sender)
                     .replaceFirst("%message%", message);
-            return placeHolderUntilNotLazy;
-        } else {
-            return "msg from " + sender + ": " + message;
-        }
+            return messageFormat;
     }
 
-    public static void sendTestNotification() {
-        String fitbitPackageName = Common.getFitBitPackageName();
-        Object notification = Common.getNotification();
-        Object categoryID = Common.getIncomingCallCategoryId();
+//    public static void sendTestNotification() {
+//        String fitbitPackageName = Common.getFitBitPackageName();
+//        Object notification = Common.getNotification();
+//        Object categoryID = Common.getIncomingCallCategoryId();
+//
+//        Common.addCategoryID(notification, categoryID);
+//
+//        Common.addPackageName(notification, fitbitPackageName);
+//
+//        // Create Notification Message
+//        Object notificationAttributeIdB = Common.getTitleNotificationAttributeId();
+//        Object titleDomain = Common.getDomainA(notificationAttributeIdB, "I am a test!");
+//        Common.addDomainA(notification, titleDomain);
+//        // End Create Notification Message
+//
+//        Object displayTemporary = Common.getTemporaryNotificationDisplayType();
+//
+//        Common.sendToFitBit(notification, displayTemporary);
+//    }
 
-        Common.addCategoryID(notification, categoryID);
-
-        Common.addPackageName(notification, fitbitPackageName);
-
-        // Create Notification Message
-        Object notificationAttributeIdB = Common.getTitleNotificationAttributeId();
-        Object titleDomain = Common.getDomainA(notificationAttributeIdB, "I am a test!");
-        Common.addDomainA(notification, titleDomain);
-        // End Create Notification Message
-
-        Object displayTemporary = Common.getTemporaryNotificationDisplayType();
-
-        Common.sendToFitBit(notification, displayTemporary);
-    }
-
-    private static String matchContact(String sender) {
-        Uri phoneUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(sender));
-        Cursor phonesCursor = Common.getContext()
-                .getApplicationContext()
-                .getContentResolver()
-                .query(phoneUri, new String[]{ContactsContract.PhoneLookup.DISPLAY_NAME}, null, null, null);
-
-        if(phonesCursor != null && phonesCursor.moveToFirst()) {
-            String matchedSender = phonesCursor.getString(0); // this is the contact name
-            return matchedSender;
-        } else {
-            return sender;
-        }
-    }
 }

@@ -2,6 +2,11 @@ package com.mikerinehart.smarterbit.xposed;
 
 import android.app.Application;
 import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Build;
+import android.os.PowerManager;
+import android.provider.ContactsContract;
 
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
@@ -46,7 +51,7 @@ public class Common {
      * Returns the FitBit package name
      */
     public static String getFitBitPackageName() {
-        return "com.fitbit";
+        return "com.fitbit"; // TODO: Replace with enum value!
     }
 
     public static void addPackageName(Object notification, String packageName) {
@@ -130,9 +135,22 @@ public class Common {
         XposedHelpers.callMethod(getNotificationManager(), "a", notification, displayDuration);
     }
 
-    public static boolean isScreenOff() {
-        //TODO: Add screen off check code
-        return true;
+    /*
+     * Matches a phone number with a phone contact
+     */
+    public static String matchContact(String sender) {
+        Uri phoneUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(sender));
+        Cursor phonesCursor = Common.getContext()
+                .getApplicationContext()
+                .getContentResolver()
+                .query(phoneUri, new String[]{ContactsContract.PhoneLookup.DISPLAY_NAME}, null, null, null);
+
+        if(phonesCursor != null && phonesCursor.moveToFirst()) {
+            String matchedSender = phonesCursor.getString(0); // this is the contact name
+            return matchedSender;
+        } else {
+            return sender;
+        }
     }
 
 }

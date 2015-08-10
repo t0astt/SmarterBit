@@ -1,6 +1,7 @@
 package com.mikerinehart.smarterbit.application.fragments;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
@@ -20,6 +21,7 @@ public class CallsFragment extends PreferenceFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.call_preferences);
+        getPreferenceManager().setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
         Preference mTestNotificationPreference = findPreference("callTestNotification");
 
         mTestNotificationPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -38,11 +40,6 @@ public class CallsFragment extends PreferenceFragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         getActivity().setTitle(getString(R.string.call_title));
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
     }
 
     public interface OnFragmentInteractionListener {}

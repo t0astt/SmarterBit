@@ -1,6 +1,7 @@
 package com.mikerinehart.smarterbit.application.activities;
 
 import android.app.FragmentTransaction;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import com.mikerinehart.smarterbit.application.fragments.SMSFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.robv.android.xposed.XSharedPreferences;
 
 public class MainActivity extends AppCompatActivity implements
                 HomeFragment.OnFragmentInteractionListener,
@@ -38,6 +40,9 @@ public class MainActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SharedPreferences pref = getSharedPreferences(getPackageName() + "_preferences", MODE_WORLD_READABLE);
+
         ButterKnife.bind(this);
 
         setSupportActionBar(mToolbar);

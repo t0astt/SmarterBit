@@ -1,22 +1,12 @@
 package com.mikerinehart.smarterbit.application.fragments;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
-import android.preference.PreferenceFragment;
 import android.widget.Toast;
 
 import com.mikerinehart.smarterbit.R;
-import com.mikerinehart.smarterbit.xposed.Common;
-import com.mikerinehart.smarterbit.xposed.SMS;
-import com.mikerinehart.smarterbit.xposed.SmarterBitXposed;
-
-import java.util.Map;
-
-import de.robv.android.xposed.XSharedPreferences;
-import de.robv.android.xposed.XposedBridge;
 
 public class SMSFragment extends BasePreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
 

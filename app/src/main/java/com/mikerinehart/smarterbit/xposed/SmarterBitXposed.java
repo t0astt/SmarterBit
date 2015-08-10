@@ -2,6 +2,10 @@ package com.mikerinehart.smarterbit.xposed;
 
 import android.content.SharedPreferences;
 
+import com.mikerinehart.smarterbit.xposed.enums.PackageName;
+import com.mikerinehart.smarterbit.xposed.hooks.Call;
+import com.mikerinehart.smarterbit.xposed.hooks.SMS;
+
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.IXposedHookZygoteInit;
 import de.robv.android.xposed.XSharedPreferences;

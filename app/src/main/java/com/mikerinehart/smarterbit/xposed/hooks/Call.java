@@ -1,4 +1,4 @@
-package com.mikerinehart.smarterbit.xposed;
+package com.mikerinehart.smarterbit.xposed.hooks;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 

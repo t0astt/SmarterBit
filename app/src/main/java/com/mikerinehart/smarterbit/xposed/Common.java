@@ -4,9 +4,10 @@ import android.app.Application;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Build;
-import android.os.PowerManager;
 import android.provider.ContactsContract;
+
+import com.mikerinehart.smarterbit.xposed.enums.ClassName;
+import com.mikerinehart.smarterbit.xposed.enums.PackageName;
 
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;

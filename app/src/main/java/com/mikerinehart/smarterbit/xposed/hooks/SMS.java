@@ -1,4 +1,4 @@
-package com.mikerinehart.smarterbit.xposed;
+package com.mikerinehart.smarterbit.xposed.hooks;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.telephony.SmsMessage;
 
 import com.mikerinehart.smarterbit.generic.Utils;
+import com.mikerinehart.smarterbit.xposed.Common;
+import com.mikerinehart.smarterbit.xposed.SmarterBitXposed;
+import com.mikerinehart.smarterbit.xposed.enums.ClassName;
 
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XposedBridge;
@@ -42,10 +45,10 @@ public class SMS {
                         String body = sms.getMessageBody();
 
                         // SMS Enabled?
-                        if (SMS.isSMSNotificationEnabled()) {
+                        if (isSMSNotificationEnabled()) {
                             XposedBridge.log("SMS Notifications Enabled");
                             //Send Notification Only if the Screen is Off?
-                            if (SMS.isNotifyOnlyIfScreenOffEnabled()) {
+                            if (isNotifyOnlyIfScreenOffEnabled()) {
                                 if (Utils.isScreenOn() == false) {
                                     XposedBridge.log("Screen is off and setting is enabled");
                                     //Option is enabled and screen is off, send

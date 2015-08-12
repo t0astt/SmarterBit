@@ -12,33 +12,19 @@ import com.mikerinehart.smarterbit.xposed.enums.PackageName;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
-import static de.robv.android.xposed.XposedHelpers.findClass;
-
 public class Common {
 
-    static Class FitBitApplication;
-    static Class NotificationManager;
-    static Class Notification;
-    static Class CategoryID;
-    static Class NotificationAttributeID;
-    static Class DomainA;
-    static Class DncsNotificationDisplayType;
+    static XC_LoadPackage.LoadPackageParam lpparam;
 
-    public static void init(XC_LoadPackage.LoadPackageParam lpparam) {
-        FitBitApplication = findClass(ClassUtils.FITBIT_APPLICATION.getClassName(), lpparam.classLoader);
-        NotificationManager = findClass(ClassUtils.NOTIFICATION_MANAGER.getClassName(), lpparam.classLoader);
-        Notification = findClass(ClassUtils.NOTIFICATION.getClassName(), lpparam.classLoader);
-        CategoryID = findClass(ClassUtils.CATEGORY_ID.getClassName(), lpparam.classLoader);
-        NotificationAttributeID = findClass(ClassUtils.NOTIFICATION_ATTRIBUTE_ID.getClassName(), lpparam.classLoader);
-        DomainA = findClass(ClassUtils.DOMAIN_A.getClassName(), lpparam.classLoader);
-        DncsNotificationDisplayType = findClass(ClassUtils.DNCS_NOTIFICATION_DISPLAY_TYPE.getClassName(), lpparam.classLoader);
+    public static void init(XC_LoadPackage.LoadPackageParam loadPackageParam) {
+        lpparam = loadPackageParam;
     }
 
     /*
      * Returns an instance of FitBitApplication from the FitBit application
      */
     public static Application getFitBitApplication() {
-        return (Application) XposedHelpers.callStaticMethod(FitBitApplication, "a");
+        return (Application) XposedHelpers.callStaticMethod(ClassUtils.FITBIT_APPLICATION.getInstance(lpparam), "a");
     }
 
     /*
@@ -63,21 +49,21 @@ public class Common {
      * Creates and returns a new Notification object
      */
     public static Object getNotification() {
-        return XposedHelpers.newInstance(Notification);
+        return XposedHelpers.newInstance(ClassUtils.NOTIFICATION.getInstance(lpparam));
     }
 
     /*
      * Returns an instance of NotificationManager from the FitBit application
      */
     public static Object getNotificationManager() {
-        return XposedHelpers.callStaticMethod(NotificationManager, "a");
+        return XposedHelpers.callStaticMethod(ClassUtils.NOTIFICATION_MANAGER.getInstance(lpparam), "a");
     }
 
     /*
      * Returns an "incoming call" CategoryID object
      */
     public static Object getIncomingCallCategoryId() {
-        return XposedHelpers.getStaticObjectField(CategoryID, "b");
+        return XposedHelpers.getStaticObjectField(ClassUtils.CATEGORY_ID.getInstance(lpparam), "b");
     }
 
     /*
@@ -98,35 +84,35 @@ public class Common {
      * Returns a "title" NotificationAttributeID object
      */
     public static Object getTitleNotificationAttributeId() {
-        return XposedHelpers.getStaticObjectField(NotificationAttributeID, "b");
+        return XposedHelpers.getStaticObjectField(ClassUtils.NOTIFICATION_ATTRIBUTE_ID.getInstance(lpparam), "b");
     }
 
     /*
      * Returns a "message" NotificationAttributeID object
      */
     public static Object getMessageNotificationAttributeId() {
-        return XposedHelpers.getStaticObjectField(NotificationAttributeID, "d");
+        return XposedHelpers.getStaticObjectField(ClassUtils.NOTIFICATION_ATTRIBUTE_ID.getInstance(lpparam), "d");
     }
 
     /*
      * Creates and returns a DomainA object
      */
     public static Object getDomainA(Object notificationAttributeIdB, String notificationMessage) {
-        return XposedHelpers.newInstance(DomainA, notificationAttributeIdB, notificationMessage);
+        return XposedHelpers.newInstance(ClassUtils.DOMAIN_A.getInstance(lpparam), notificationAttributeIdB, notificationMessage);
     }
 
     /*
      * Creates and returns a Temporary DncsNotificationDisplayType object
      */
     public static Object getTemporaryNotificationDisplayType() {
-        return XposedHelpers.getStaticObjectField(DncsNotificationDisplayType, "a");
+        return XposedHelpers.getStaticObjectField(ClassUtils.DNCS_NOTIFICATION_DISPLAY_TYPE.getInstance(lpparam), "a");
     }
 
     /*
      * Creates and returns a Permanent DncsNotificationDisplayType object
      */
     public static Object getPermanentNotificationDisplayType()  {
-        return XposedHelpers.getStaticObjectField(DncsNotificationDisplayType, "b");
+        return XposedHelpers.getStaticObjectField(ClassUtils.DNCS_NOTIFICATION_DISPLAY_TYPE.getInstance(lpparam), "b");
     }
 
     /*

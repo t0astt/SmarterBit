@@ -79,9 +79,14 @@ public class SMS {
 
         Bundle bundle = intent.getExtras();
         Object[] pdus = (Object[]) bundle.get("pdus");
-        byte[] smsByte = (byte[]) pdus[0];
+        byte[] smsPdu;
+        try {
+            smsPdu = (byte[]) pdus[0];
+        } catch(NullPointerException e) {
+            smsPdu = new byte[0];
+        }
 
-        return SmsMessage.createFromPdu(smsByte);
+        return SmsMessage.createFromPdu(smsPdu);
     }
 
     /*

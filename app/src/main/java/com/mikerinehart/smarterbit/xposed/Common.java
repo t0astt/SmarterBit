@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
 
-import com.mikerinehart.smarterbit.xposed.enums.ClassName;
+import com.mikerinehart.smarterbit.xposed.enums.ClassUtils;
 import com.mikerinehart.smarterbit.xposed.enums.PackageName;
 
 import de.robv.android.xposed.XposedHelpers;
@@ -25,13 +25,13 @@ public class Common {
     static Class DncsNotificationDisplayType;
 
     public static void init(XC_LoadPackage.LoadPackageParam lpparam) {
-        FitBitApplication = findClass(ClassName.FITBIT_APPLICATION.getClassName(), lpparam.classLoader);
-        NotificationManager = findClass(ClassName.NOTIFICATION_MANAGER.getClassName(), lpparam.classLoader);
-        Notification = findClass(ClassName.NOTIFICATION.getClassName(), lpparam.classLoader);
-        CategoryID = findClass(ClassName.CATEGORY_ID.getClassName(), lpparam.classLoader);
-        NotificationAttributeID = findClass(ClassName.NOTIFICATION_ATTRIBUTE_ID.getClassName(), lpparam.classLoader);
-        DomainA = findClass(ClassName.DOMAIN_A.getClassName(), lpparam.classLoader);
-        DncsNotificationDisplayType = findClass(ClassName.DNCS_NOTIFICATION_DISPLAY_TYPE.getClassName(), lpparam.classLoader);
+        FitBitApplication = findClass(ClassUtils.FITBIT_APPLICATION.getClassName(), lpparam.classLoader);
+        NotificationManager = findClass(ClassUtils.NOTIFICATION_MANAGER.getClassName(), lpparam.classLoader);
+        Notification = findClass(ClassUtils.NOTIFICATION.getClassName(), lpparam.classLoader);
+        CategoryID = findClass(ClassUtils.CATEGORY_ID.getClassName(), lpparam.classLoader);
+        NotificationAttributeID = findClass(ClassUtils.NOTIFICATION_ATTRIBUTE_ID.getClassName(), lpparam.classLoader);
+        DomainA = findClass(ClassUtils.DOMAIN_A.getClassName(), lpparam.classLoader);
+        DncsNotificationDisplayType = findClass(ClassUtils.DNCS_NOTIFICATION_DISPLAY_TYPE.getClassName(), lpparam.classLoader);
     }
 
     /*

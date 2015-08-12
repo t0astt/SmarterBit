@@ -8,35 +8,19 @@ import android.telephony.SmsMessage;
 import com.mikerinehart.smarterbit.generic.Utils;
 import com.mikerinehart.smarterbit.xposed.Common;
 import com.mikerinehart.smarterbit.xposed.SmarterBitXposed;
-import com.mikerinehart.smarterbit.xposed.enums.ClassName;
+import com.mikerinehart.smarterbit.xposed.enums.ClassUtils;
 
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
-import static de.robv.android.xposed.XposedHelpers.findClass;
-
 public class SMS {
-
-    static Class SmsObserver;
-    static Class CategoryID;
-    static Class FitBitApplication;
-    static Class ObserversA;
-    static Class DomainA;
-    static Class NotificationAttributeID;
 
     public static void initHooks(XC_LoadPackage.LoadPackageParam lpparam) {
 
-        SmsObserver = findClass(ClassName.SMS_OBSERVER.getClassName(), lpparam.classLoader);
-        CategoryID = findClass(ClassName.CATEGORY_ID.getClassName(), lpparam.classLoader);
-        FitBitApplication = findClass(ClassName.FITBIT_APPLICATION.getClassName(), lpparam.classLoader);
-        ObserversA = findClass(ClassName.OBSERVERS_A.getClassName(), lpparam.classLoader);
-        DomainA = findClass(ClassName.DOMAIN_A.getClassName(), lpparam.classLoader);
-        NotificationAttributeID = findClass(ClassName.NOTIFICATION_ATTRIBUTE_ID.getClassName(), lpparam.classLoader);
-
         //SMS Hook
-        XposedHelpers.findAndHookMethod(SmsObserver.getCanonicalName(), lpparam.classLoader, "a", Context.class, Intent.class,
+        XposedHelpers.findAndHookMethod(ClassUtils.SMS_OBSERVER.getInstance(lpparam).getCanonicalName(), lpparam.classLoader, "a", Context.class, Intent.class,
                 new XC_MethodHook() {
                     protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                         XposedBridge.log("SMS Received!");

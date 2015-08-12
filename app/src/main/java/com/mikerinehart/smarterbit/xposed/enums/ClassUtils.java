@@ -1,6 +1,10 @@
 package com.mikerinehart.smarterbit.xposed.enums;
 
-public enum ClassName {
+import de.robv.android.xposed.callbacks.XC_LoadPackage;
+
+import static de.robv.android.xposed.XposedHelpers.findClass;
+
+public enum ClassUtils {
 
     CATEGORY_ID("com.fitbit.dncs.domain.CategoryID"),
     DNCS_NOTIFICATION_DISPLAY_TYPE("com.fitbit.dncs.NotificationManager$DncsNotificationDisplayType"),
@@ -12,10 +16,20 @@ public enum ClassName {
     OBSERVERS_A("com.fitbit.dncs.observers.a"),
     SMS_OBSERVER("com.fitbit.dncs.observers.sms.SmsObserver");
 
+    private Class clazz;
     private String className;
 
-    ClassName(String className) {
+    ClassUtils(String className) {
         this.className = className;
+    }
+
+    public Class getInstance(XC_LoadPackage.LoadPackageParam lpparam) {
+        if (this.clazz != null) {
+            return this.clazz;
+        } else {
+            this.clazz = findClass(getClassName(), lpparam.classLoader);
+            return this.clazz;
+        }
     }
 
     public String getClassName() {

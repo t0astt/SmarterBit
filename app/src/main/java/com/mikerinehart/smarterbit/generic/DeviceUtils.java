@@ -10,7 +10,7 @@ import com.mikerinehart.smarterbit.xposed.Common;
 
 import de.robv.android.xposed.XposedBridge;
 
-public class Utils {
+public class DeviceUtils {
 
     public static int getSDKVersion() {
         return Build.VERSION.SDK_INT;

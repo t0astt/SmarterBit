@@ -5,10 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
 
-import com.mikerinehart.smarterbit.generic.Utils;
+import com.mikerinehart.smarterbit.generic.DeviceUtils;
 import com.mikerinehart.smarterbit.xposed.Common;
 import com.mikerinehart.smarterbit.xposed.SmarterBitXposed;
-import com.mikerinehart.smarterbit.xposed.enums.ClassUtils;
+import com.mikerinehart.smarterbit.xposed.enums.FitBitClasses;
 
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XposedBridge;
@@ -20,9 +20,10 @@ public class SMS {
     public static void initHooks(XC_LoadPackage.LoadPackageParam lpparam) {
 
         //SMS Hook
-        XposedHelpers.findAndHookMethod(ClassUtils.SMS_OBSERVER.getInstance(lpparam).getCanonicalName(), lpparam.classLoader, "a", Context.class, Intent.class,
+        XposedHelpers.findAndHookMethod(FitBitClasses.SMS_OBSERVER.getInstance(lpparam).getCanonicalName(), lpparam.classLoader, "a", Context.class, Intent.class,
                 new XC_MethodHook() {
                     protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+                        SmarterBitXposed.reloadPreferences();
                         XposedBridge.log("SMS Received!");
                         SmsMessage sms = getReceivedSMS(param);
                         String sender = sms.getOriginatingAddress();
@@ -33,7 +34,7 @@ public class SMS {
                             XposedBridge.log("SMS Notifications Enabled");
                             //Send Notification Only if the Screen is Off?
                             if (isNotifyOnlyIfScreenOffEnabled()) {
-                                if (Utils.isScreenOn() == false) {
+                                if (DeviceUtils.isScreenOn() == false) {
                                     XposedBridge.log("Screen is off and setting is enabled");
                                     //Option is enabled and screen is off, send
                                     sendSMSNotification(sender, body);
@@ -123,25 +124,4 @@ public class SMS {
                     .replaceFirst("%message%", message);
             return messageFormat;
     }
-
-//    public static void sendTestNotification() {
-//        String fitbitPackageName = Common.getFitBitPackageName();
-//        Object notification = Common.getNotification();
-//        Object categoryID = Common.getIncomingCallCategoryId();
-//
-//        Common.addCategoryID(notification, categoryID);
-//
-//        Common.addPackageName(notification, fitbitPackageName);
-//
-//        // Create Notification Message
-//        Object notificationAttributeIdB = Common.getTitleNotificationAttributeId();
-//        Object titleDomain = Common.getDomainA(notificationAttributeIdB, "I am a test!");
-//        Common.addDomainA(notification, titleDomain);
-//        // End Create Notification Message
-//
-//        Object displayTemporary = Common.getTemporaryNotificationDisplayType();
-//
-//        Common.sendToFitBit(notification, displayTemporary);
-//    }
-
 }

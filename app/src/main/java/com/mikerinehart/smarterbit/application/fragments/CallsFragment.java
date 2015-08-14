@@ -21,19 +21,8 @@ public class CallsFragment extends BasePreferenceFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.call_preferences);
-        getPreferenceManager().setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
-        Preference mTestNotificationPreference = findPreference("callTestNotification");
 
-        mTestNotificationPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                Toast.makeText(getActivity(),
-                        getString(R.string.test_notification_sent),
-                        Toast.LENGTH_SHORT).show();
-                //TODO: Add in Test function
-                return true;
-            }
-        });
+        getPreferenceManager().setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
     }
 
     @Override

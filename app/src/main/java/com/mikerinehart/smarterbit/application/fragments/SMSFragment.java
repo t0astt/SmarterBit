@@ -21,18 +21,18 @@ public class SMSFragment extends BasePreferenceFragment implements SharedPrefere
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.sms_preferences);
 
-        Preference mTestNotificationPreference = findPreference("smsTestNotification");
-
-        mTestNotificationPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                Toast.makeText(getActivity(),
-                        getString(R.string.test_notification_sent),
-                        Toast.LENGTH_SHORT).show();
-                //TODO: Add in Test function
-                return true;
-            }
-        });
+//        Preference mTestNotificationPreference = findPreference("smsTestNotification");
+//
+//        mTestNotificationPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+//            @Override
+//            public boolean onPreferenceClick(Preference preference) {
+//                Toast.makeText(getActivity(),
+//                        getString(R.string.test_notification_sent),
+//                        Toast.LENGTH_SHORT).show();
+//                //TODO: Add in Test function
+//                return true;
+//            }
+//        });
     }
 
     @Override

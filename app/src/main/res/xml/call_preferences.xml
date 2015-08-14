@@ -27,11 +27,11 @@
             android:key="callHideID"
             android:summary="@string/call_hide_caller_id_description"/>
     </PreferenceCategory>
-    <PreferenceCategory
-        android:title="@string/test">
-        <Preference
-            android:title="@string/test_notification"
-            android:summary="@string/test_notification_description"
-            android:key="callTestNotification" />
-    </PreferenceCategory>
+    <!--<PreferenceCategory-->
+        <!--android:title="@string/test">-->
+        <!--<Preference-->
+            <!--android:title="@string/test_notification"-->
+            <!--android:summary="@string/test_notification_description"-->
+            <!--android:key="callTestNotification" />-->
+    <!--</PreferenceCategory>-->
 </PreferenceScreen>

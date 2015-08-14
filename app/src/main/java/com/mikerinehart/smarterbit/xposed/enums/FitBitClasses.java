@@ -4,7 +4,7 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
 import static de.robv.android.xposed.XposedHelpers.findClass;
 
-public enum ClassUtils {
+public enum FitBitClasses {
 
     CATEGORY_ID("com.fitbit.dncs.domain.CategoryID"),
     DNCS_NOTIFICATION_DISPLAY_TYPE("com.fitbit.dncs.NotificationManager$DncsNotificationDisplayType"),
@@ -14,12 +14,13 @@ public enum ClassUtils {
     NOTIFICATION("com.fitbit.dncs.Notification"),
     NOTIFICATION_ATTRIBUTE_ID("com.fitbit.dncs.domain.NotificationAttributeId"),
     OBSERVERS_A("com.fitbit.dncs.observers.a"),
+    PHONE_CALL_OBSERVER("com.fitbit.dncs.observers.phone.PhoneCallObserver"),
     SMS_OBSERVER("com.fitbit.dncs.observers.sms.SmsObserver");
 
     private Class clazz;
     private String className;
 
-    ClassUtils(String className) {
+    FitBitClasses(String className) {
         this.className = className;
     }
 

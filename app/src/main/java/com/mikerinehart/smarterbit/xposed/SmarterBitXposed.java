@@ -22,15 +22,19 @@ public class SmarterBitXposed implements IXposedHookLoadPackage, IXposedHookZygo
 
     public void handleLoadPackage(final XC_LoadPackage.LoadPackageParam lpparam) throws Throwable {
         if(lpparam.packageName.equals(PackageName.FITBIT.getPackageName())) {
+            //makeNewPreferences();
             Common.init(lpparam);
             SMS.initHooks(lpparam);
             Call.initHooks(lpparam);
+            prefs.reload();
+        } else {
+            return;
         }
     }
 
     public void onSharedPreferenceChanged(SharedPreferences xsp, String key) {
         XposedBridge.log("SP Changed, reloading");
-        reloadPreferences();
+        //reloadPreferences();
     }
 
 
@@ -54,7 +58,6 @@ public class SmarterBitXposed implements IXposedHookLoadPackage, IXposedHookZygo
 
     private static void makeNewPreferences() {
         prefs = new XSharedPreferences(PackageName.SMARTERBIT.getPackageName());
-        prefs.reload();
         prefs.makeWorldReadable();
     }
 }

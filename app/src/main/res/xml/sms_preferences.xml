@@ -21,11 +21,11 @@
             android:key="smsNotificationFormat"
             android:summary="@string/sms_custom_format_description"/>
     </PreferenceCategory>
-    <PreferenceCategory
-        android:title="@string/test">
-        <Preference
-            android:title="@string/test_notification"
-            android:summary="@string/test_notification_description"
-            android:key="smsTestNotification" />
-    </PreferenceCategory>
+    <!--<PreferenceCategory-->
+        <!--android:title="@string/test">-->
+        <!--<Preference-->
+            <!--android:title="@string/test_notification"-->
+            <!--android:summary="@string/test_notification_description"-->
+            <!--android:key="smsTestNotification" />-->
+    <!--</PreferenceCategory>-->
 </PreferenceScreen>

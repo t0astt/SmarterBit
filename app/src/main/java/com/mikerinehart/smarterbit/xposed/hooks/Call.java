@@ -2,8 +2,6 @@ package com.mikerinehart.smarterbit.xposed.hooks;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.telephony.TelephonyManager;
 
 import com.mikerinehart.smarterbit.generic.DeviceUtils;
 import com.mikerinehart.smarterbit.xposed.SmarterBitXposed;

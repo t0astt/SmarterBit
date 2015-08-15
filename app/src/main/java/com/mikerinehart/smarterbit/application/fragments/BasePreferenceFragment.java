@@ -3,11 +3,6 @@ package com.mikerinehart.smarterbit.application.fragments;
 import android.content.SharedPreferences;
 import android.preference.PreferenceFragment;
 
-import com.mikerinehart.smarterbit.xposed.SmarterBitXposed;
-
-/**
- * Created by mike on 8/9/15.
- */
 public class BasePreferenceFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     @Override

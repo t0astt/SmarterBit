@@ -32,7 +32,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Welcome to SmarterBit"
+                android:text="@string/home_subtitle"
                 android:id="@+id/home_subtitle"
                 android:layout_below="@+id/home_title"
                 android:layout_centerHorizontal="true"
@@ -43,9 +43,30 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="SmarterBit is an XPosed Framework module to enable additional functionality for the Fitbit Charge and Charge HR fitness trackers.\n\nUse SmarterBit to enable new notifications such as SMS, weather, timers, and more!\n\nPlease note that a rooted phone with XPosed Framework installed is needed for the this app to function."
+                android:text="@string/home_description"
                 android:id="@+id/home_desc"
                 android:layout_below="@+id/home_subtitle"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/home_how_do_i_use_subtitle"
+                android:id="@+id/home_how_do_i_use_subtitle"
+                android:layout_below="@+id/home_desc"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/home_how_do_i_use_description"
+                android:id="@+id/textView"
+                android:layout_below="@+id/home_how_do_i_use_subtitle"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="8dp" />
         </RelativeLayout>

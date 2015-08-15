@@ -8,6 +8,14 @@
     <string name="extras_title">Extras</string>
     <string name="about_title">About &amp; Legal</string>
 
+    <!-- Home Fragment -->
+    <string name="home_subtitle">Welcome to SmarterBit</string>
+    <string name="home_description">SmarterBit is an Xposed Framework module to enable additional functionality for the
+        Fitbit Charge and Charge HR fitness trackers.\n\nUse SmarterBit to enable SMS notifications and control how and when
+     you receive them!</string>
+    <string name="home_how_do_i_use_subtitle">How Do I Use SmarterBit?</string>
+    <string name="home_how_do_i_use_description">1. Enable "Call Notifications" in the Fitbit app.\n2. Choose your settings in SmarterBit.\n3. Reboot your phone.\n4. Enjoy!</string>
+
     <!-- Generic Settings -->
     <string name="settings">Settings</string>
     <string name="enable">Enable</string>
@@ -36,7 +44,7 @@
 
     <!-- About & Legal -->
     <string name="about_subtitle">About</string>
-    <string name="about_description">SmarterBit is an XPosed Framework module for adding
+    <string name="about_description">SmarterBit is an Xposed Framework module for adding
                                     additional functionality to the Fitbit Charge and Charge HR fitness trackers.
     </string>
     <string name="legal_subtitle">Legal</string>

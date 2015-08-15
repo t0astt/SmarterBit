@@ -17,27 +17,24 @@ public class DeviceUtils {
     }
 
     @TargetApi(20)
+    @SuppressWarnings("deprecation")
     public static boolean isScreenOn() {
         if (getSDKVersion() >= 20) {
             XposedBridge.log("Power Service via Interactive");
             boolean status = ((PowerManager)Common.getContext().getSystemService(Context.POWER_SERVICE)).isInteractive();
             if (status) XposedBridge.log("Power service returning true"); else XposedBridge.log("Pwr return false");
-            return ((PowerManager)Common.getContext().getSystemService(Context.POWER_SERVICE)).isInteractive();
+            return status;
         } else {
             XposedBridge.log("Power service via ScreenOn (deprecated)");
             boolean status = ((PowerManager)Common.getContext().getSystemService(Context.POWER_SERVICE)).isScreenOn();
             if (status) XposedBridge.log("Power service returning true"); else XposedBridge.log("Pwr return false");
-            return ((PowerManager)Common.getContext().getSystemService(Context.POWER_SERVICE)).isScreenOn();
+            return status;
         }
     }
 
     public static boolean isDeviceSilent() {
         AudioManager am =  ((AudioManager)Common.getContext().getSystemService(Context.AUDIO_SERVICE));
-        if (am.getRingerMode() == am.RINGER_MODE_SILENT) {
-            return true;
-        } else {
-            return false;
-        }
+        return am.getRingerMode() == AudioManager.RINGER_MODE_SILENT;
     }
 
 }

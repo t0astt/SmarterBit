@@ -3,9 +3,6 @@ package com.mikerinehart.smarterbit.application.fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.preference.Preference;
-import android.preference.PreferenceFragment;
-import android.widget.Toast;
 
 import com.mikerinehart.smarterbit.R;
 
@@ -18,6 +15,7 @@ public class CallsFragment extends BasePreferenceFragment {
     public CallsFragment() {}
 
     @Override
+    @SuppressWarnings("deprecation")
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.call_preferences);
@@ -30,7 +28,4 @@ public class CallsFragment extends BasePreferenceFragment {
         super.onAttach(activity);
         getActivity().setTitle(getString(R.string.call_title));
     }
-
-    public interface OnFragmentInteractionListener {}
-
 }

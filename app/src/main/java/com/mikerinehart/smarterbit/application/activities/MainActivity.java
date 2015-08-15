@@ -1,9 +1,8 @@
 package com.mikerinehart.smarterbit.application.activities;
 
 import android.app.FragmentTransaction;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,23 +21,17 @@ import com.mikerinehart.smarterbit.application.fragments.HomeFragment;
 import com.mikerinehart.smarterbit.application.fragments.OtherFragment;
 import com.mikerinehart.smarterbit.application.fragments.SMSFragment;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-
-public class MainActivity extends AppCompatActivity implements
-                HomeFragment.OnFragmentInteractionListener,
-                CallsFragment.OnFragmentInteractionListener,
-                SMSFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity {
 
     private Drawer mResult;
-
-    @Bind(R.id.toolbar) Toolbar mToolbar;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
         setSupportActionBar(mToolbar);
 
@@ -116,6 +109,4 @@ public class MainActivity extends AppCompatActivity implements
                 .replace(R.id.container, HomeFragment.newInstance())
                 .commit();
     }
-
-    public void onFragmentInteraction(Uri uri){}
 }

@@ -12,7 +12,7 @@ import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
-public class SmarterBitXposed implements IXposedHookLoadPackage, IXposedHookZygoteInit, SharedPreferences.OnSharedPreferenceChangeListener{
+public class SmarterBitXposed implements IXposedHookLoadPackage, IXposedHookZygoteInit, SharedPreferences.OnSharedPreferenceChangeListener {
 
     private static XSharedPreferences prefs;
 
@@ -27,8 +27,6 @@ public class SmarterBitXposed implements IXposedHookLoadPackage, IXposedHookZygo
             SMS.initHooks(lpparam);
             Call.initHooks(lpparam);
             prefs.reload();
-        } else {
-            return;
         }
     }
 

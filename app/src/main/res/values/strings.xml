@@ -14,7 +14,7 @@
         Fitbit Charge and Charge HR fitness trackers.\n\nUse SmarterBit to enable SMS notifications and control how and when
      you receive them!</string>
     <string name="home_how_do_i_use_subtitle">How Do I Use SmarterBit?</string>
-    <string name="home_how_do_i_use_description">1. Enable "Call Notifications" in the Fitbit app.\n2. Choose your settings in SmarterBit.\n3. Reboot your phone.\n4. Enjoy!</string>
+    <string name="home_how_do_i_use_description">1. Choose your settings in SmarterBit.\n2. Reboot your phone.\n3. Turn on "Enable SmarterBit" in the Fitbit app.\n4. Enjoy!</string>
 
     <!-- Generic Settings -->
     <string name="settings">Settings</string>
@@ -28,19 +28,18 @@
     <string name="test_notification_sent">Test notification sent - check your Fitbit!</string>
 
     <!-- SMS Settings -->
-    <string name="sms_enabled_description">If checked, you will receive SMS notifications on your Fitbit. "Call Notifications" must be enabled
-                                            in the Fitbit app for SMS notifications to be received.</string>
+    <string name="sms_enabled_description">If checked, you will receive SMS notifications on your Fitbit.</string>
     <string name="sms_only_if_screen_off_description">If checked, you will receive SMS notifications on your Fitbit only if your device screen is off.</string>
     <string name="sms_only_if_silent_description">If checked, you will only receive SMS notifications on your Fitbit if the phone is on silent.</string>
     <string name="sms_custom_format">Custom Notification Format</string>
     <string name="sms_custom_format_description">Enter how you want your notification to appear, using %sender% and %message% as placeholders.</string>
 
     <!-- Call Settings -->
-    <string name="call_enabled_description">If checked, you will receive call notifications on your Fitbit. Overrides your setting in the Fitbit app.</string>
+    <string name="call_enabled_description">If checked, you will receive call notifications on your Fitbit.</string>
     <string name="call_only_if_screen_off_description">If checked, you will only receive call notifications on your Fitbit if your device screen is off.</string>
     <string name="call_only_if_silent_description">If checked, you will only receive call notifications on your Fitbit if your device is silent.</string>
     <string name="call_hide_caller_id">Hide Caller ID</string>
-    <string name="call_hide_caller_id_description">Hide caller ID and replace it with "Incoming Call".</string>
+    <string name="call_hide_caller_id_description">Hide caller ID and replace it with \"Incoming Call\".</string>
 
     <!-- About & Legal -->
     <string name="about_subtitle">About</string>
@@ -50,6 +49,6 @@
     <string name="legal_subtitle">Legal</string>
     <string name="legal_description">SmarterBit is an unofficial modification to the Fitbit fitness tracker.
                                     Although no negative issues have been encountered, use of this app is at your own risk
-                                    and neither Fitbit nor the developer of this app will be held accountable for any damage incurred.</string>
+                                    and neither Fitbit nor the developer of this app will be held accountable for any damage (legal or tangible) incurred.</string>
     <string name="copyright">© 2015 Mike Rinehart</string>
 </resources>

@@ -2,10 +2,11 @@ package com.mikerinehart.smarterbit.application.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.preference.PreferenceFragment;
 
 import com.mikerinehart.smarterbit.R;
 
-public class OtherFragment extends BasePreferenceFragment {
+public class OtherFragment extends PreferenceFragment {
 
     public static OtherFragment newInstance() {
         return new OtherFragment();

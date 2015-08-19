@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                                     break;
                                 case (2):
                                     //SMS
-                                    ft.replace(R.id.container, SMSFragment.newInstance());
+                                    ft.replace(R.id.container, new SMSFragment());
                                     ft.addToBackStack(getString(R.string.sms_title));
                                     ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                                     ft.commit();

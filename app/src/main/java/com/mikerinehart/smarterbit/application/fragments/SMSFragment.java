@@ -1,12 +1,13 @@
 package com.mikerinehart.smarterbit.application.fragments;
 
 import android.app.Activity;
-import android.content.SharedPreferences;
+import android.content.Context;
 import android.os.Bundle;
+import android.preference.PreferenceFragment;
 
 import com.mikerinehart.smarterbit.R;
 
-public class SMSFragment extends BasePreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
+public class SMSFragment extends PreferenceFragment {
 
     public static SMSFragment newInstance() {
         return new SMSFragment();
@@ -15,27 +16,11 @@ public class SMSFragment extends BasePreferenceFragment implements SharedPrefere
     public SMSFragment() {}
 
     @Override
+    @SuppressWarnings("deprecation")
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getPreferenceManager().setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
         addPreferencesFromResource(R.xml.sms_preferences);
-
-//        Preference mTestNotificationPreference = findPreference("smsTestNotification");
-//
-//        mTestNotificationPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-//            @Override
-//            public boolean onPreferenceClick(Preference preference) {
-//                Toast.makeText(getActivity(),
-//                        getString(R.string.test_notification_sent),
-//                        Toast.LENGTH_SHORT).show();
-//                //TODO: Add in Test function
-//                return true;
-//            }
-//        });
-    }
-
-    @Override
-    public void onSharedPreferenceChanged(SharedPreferences sp, String s) {
-        super.onSharedPreferenceChanged(sp, s);
     }
 
     @Override

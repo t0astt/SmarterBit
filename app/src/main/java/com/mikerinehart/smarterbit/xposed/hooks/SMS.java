@@ -5,10 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
 
+import com.mikerinehart.smarterbit.SmarterBitXposed;
 import com.mikerinehart.smarterbit.generic.DeviceUtils;
 import com.mikerinehart.smarterbit.xposed.Common;
-import com.mikerinehart.smarterbit.xposed.SmarterBitXposed;
-import com.mikerinehart.smarterbit.xposed.enums.FitBitClasses;
 
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XposedBridge;
@@ -20,11 +19,15 @@ public class SMS {
     public static void initHooks(XC_LoadPackage.LoadPackageParam lpparam) {
 
         //SMS Hook
-        XposedHelpers.findAndHookMethod(FitBitClasses.SMS_OBSERVER.getInstance(lpparam).getCanonicalName(), lpparam.classLoader, "a", Context.class, Intent.class,
+        XposedHelpers.findAndHookMethod("com.fitbit.dncs.observers.sms.SmsObserver", lpparam.classLoader, "a", Context.class, Intent.class,
                 new XC_MethodHook() {
                     protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-                        SmarterBitXposed.reloadPreferences();
+                        SmarterBitXposed.prefs.reload();
+                        String test = SmarterBitXposed.prefs.getString("smsNotificationFormat", "Key not read");
+                        XposedBridge.log("Test is: " + test);
+
                         XposedBridge.log("SMS Received!");
+
                         SmsMessage sms = getReceivedSMS(param);
                         String sender = sms.getOriginatingAddress();
                         String body = sms.getMessageBody();
@@ -94,22 +97,24 @@ public class SMS {
      * Checks if user has SMS notifications enabled
      */
     private static boolean isSMSNotificationEnabled() {
-        boolean status = SmarterBitXposed.getPreferences().getBoolean("smsEnabled", false);
+        boolean status = SmarterBitXposed.prefs.getBoolean("smsEnabled", false);
         if (status) {
             XposedBridge.log("SMS Status: Enabled");
         } else XposedBridge.log("SMS Status: False");
-        return SmarterBitXposed.getPreferences().getBoolean("smsEnabled", false);
+        return SmarterBitXposed.prefs.getBoolean("smsEnabled", false);
+//        return true;
     }
 
     /*
      * Checks if user has screen off notifications enabled
      */
     private static boolean isNotifyOnlyIfScreenOffEnabled() {
-        boolean status = SmarterBitXposed.getPreferences().getBoolean("smsScreenOffOnly", false);
+        boolean status = SmarterBitXposed.prefs.getBoolean("smsScreenOffOnly", false);
         if (status) {
             XposedBridge.log("SMS Screen off only: Enabled");
         } else XposedBridge.log("SMS Screen off only: False");
-        return SmarterBitXposed.getPreferences().getBoolean("smsScreenOffOnly", false);
+        return SmarterBitXposed.prefs.getBoolean("smsScreenOffOnly", false);
+//        return false;
     }
 
     /*
@@ -117,7 +122,7 @@ public class SMS {
      */
     private static String formatMessage(String sender, String message) {
             String messageFormat = SmarterBitXposed
-                    .getPreferences()
+                    .prefs
                     .getString("smsNotificationFormat", "msg from %sender%: %message%");
             messageFormat = messageFormat
                     .replaceFirst("%sender%", sender)

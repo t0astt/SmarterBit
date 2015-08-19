@@ -3,10 +3,11 @@ package com.mikerinehart.smarterbit.application.fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.preference.PreferenceFragment;
 
 import com.mikerinehart.smarterbit.R;
 
-public class CallsFragment extends BasePreferenceFragment {
+public class CallsFragment extends PreferenceFragment {
 
     public static CallsFragment newInstance() {
         return new CallsFragment();
@@ -18,9 +19,8 @@ public class CallsFragment extends BasePreferenceFragment {
     @SuppressWarnings("deprecation")
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.call_preferences);
-
         getPreferenceManager().setSharedPreferencesMode(Context.MODE_WORLD_READABLE);
+        addPreferencesFromResource(R.xml.call_preferences);
     }
 
     @Override

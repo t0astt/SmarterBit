@@ -8,6 +8,7 @@ import android.telephony.SmsMessage;
 import com.mikerinehart.smarterbit.SmarterBitXposed;
 import com.mikerinehart.smarterbit.generic.DeviceUtils;
 import com.mikerinehart.smarterbit.xposed.Common;
+import com.mikerinehart.smarterbit.xposed.enums.FitBitClasses;
 
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XposedBridge;
@@ -19,14 +20,11 @@ public class SMS {
     public static void initHooks(XC_LoadPackage.LoadPackageParam lpparam) {
 
         //SMS Hook
-        XposedHelpers.findAndHookMethod("com.fitbit.dncs.observers.sms.SmsObserver", lpparam.classLoader, "a", Context.class, Intent.class,
+        XposedHelpers.findAndHookMethod(FitBitClasses.SMS_OBSERVER.getInstance(lpparam).getCanonicalName(), lpparam.classLoader, "a", Context.class, Intent.class,
                 new XC_MethodHook() {
                     protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-                        SmarterBitXposed.prefs.reload();
-                        String test = SmarterBitXposed.prefs.getString("smsNotificationFormat", "Key not read");
-                        XposedBridge.log("Test is: " + test);
-
                         XposedBridge.log("SMS Received!");
+                        SmarterBitXposed.prefs.reload();
 
                         SmsMessage sms = getReceivedSMS(param);
                         String sender = sms.getOriginatingAddress();
@@ -101,8 +99,7 @@ public class SMS {
         if (status) {
             XposedBridge.log("SMS Status: Enabled");
         } else XposedBridge.log("SMS Status: False");
-        return SmarterBitXposed.prefs.getBoolean("smsEnabled", false);
-//        return true;
+        return status;
     }
 
     /*
@@ -113,17 +110,15 @@ public class SMS {
         if (status) {
             XposedBridge.log("SMS Screen off only: Enabled");
         } else XposedBridge.log("SMS Screen off only: False");
-        return SmarterBitXposed.prefs.getBoolean("smsScreenOffOnly", false);
-//        return false;
+        return status;
     }
 
     /*
      * Reads a custom notification format set by the user
      */
     private static String formatMessage(String sender, String message) {
-            String messageFormat = SmarterBitXposed
-                    .prefs
-                    .getString("smsNotificationFormat", "msg from %sender%: %message%");
+        String messageFormat =
+                SmarterBitXposed.prefs.getString("smsNotificationFormat", "msg from %sender%: %message%");
             messageFormat = messageFormat
                     .replaceFirst("%sender%", sender)
                     .replaceFirst("%message%", message);

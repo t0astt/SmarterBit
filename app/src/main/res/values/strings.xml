@@ -14,7 +14,7 @@
         Fitbit Charge and Charge HR fitness trackers.\n\nUse SmarterBit to enable SMS notifications and control how and when
      you receive them!</string>
     <string name="home_how_do_i_use_subtitle">How Do I Use SmarterBit?</string>
-    <string name="home_how_do_i_use_description">1. Choose your settings in SmarterBit.\n2. Reboot your phone.\n3. Turn on "Enable SmarterBit" in the Fitbit app.\n4. Enjoy!</string>
+    <string name="home_how_do_i_use_description">1. Activate the SmarterBit Xposed module.\n2. Turn on "Enable SmarterBit" in the Fitbit app.\n3. Choose your settings in SmarterBit.\n4. Enjoy!</string>
 
     <!-- Generic Settings -->
     <string name="settings">Settings</string>

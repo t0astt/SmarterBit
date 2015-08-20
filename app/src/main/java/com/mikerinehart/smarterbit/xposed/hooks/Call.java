@@ -56,12 +56,11 @@ public class Call {
     * Checks if user has call notifications enabled
     */
     private static boolean isCallNotificationEnabled() {
-        XposedBridge.log("IsCallNotificationsEnabled method called");
         boolean status = SmarterBitXposed.prefs.getBoolean("callEnabled", false);
         if (status) {
             XposedBridge.log("Call Enabled: True");
         } else XposedBridge.log("Call Enabled: False");
-        return SmarterBitXposed.prefs.getBoolean("callEnabled", false);
+        return status;
     }
 
     /*
@@ -72,7 +71,7 @@ public class Call {
         if (status) {
             XposedBridge.log("Call Screen off only: Enabled");
         } else XposedBridge.log("Call Screen off only: False");
-        return SmarterBitXposed.prefs.getBoolean("callScreenOffOnly", false);
+        return status;
     }
 
     /*
@@ -83,6 +82,6 @@ public class Call {
         if (status) {
             XposedBridge.log("Hide Caller ID: Enabled");
         } else XposedBridge.log("Hide Caller ID: False");
-        return SmarterBitXposed.prefs.getBoolean("callHideID", false);
+        return status;
     }
 }

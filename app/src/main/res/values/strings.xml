@@ -50,5 +50,6 @@
     <string name="legal_description">SmarterBit is an unofficial modification to the Fitbit fitness tracker.
                                     Although no negative issues have been encountered, use of this app is at your own risk
                                     and neither Fitbit nor the developer of this app will be held accountable for any damage (legal or tangible) incurred.</string>
-    <string name="copyright">© 2015 Mike Rinehart</string>
+    <string name="copyright">© 2015 Mike Rinehart\n
+    Icon by itsbaska.coma</string>
 </resources>
